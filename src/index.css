@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    h1 {
+      @apply text-2xl;
+      color: #8d8989;
+    }
+    h2 {
+        @apply text-xl;
+        color: #8d8989;
+    }
+    p {
+        color: #989393;
+    }
+    @font-face {
+        font-family: 'MadimiOne';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(/fonts/MadimiOne-Regular.ttf);
+      }
+  }

@@ -15,7 +15,7 @@ export const Example = () => {
       <Button />
       <button
         data-testid="example-one"
-        className=" bg-lime-400 block p-2 border border-lime-700 rounded-md mb-2"
+        className=" bg-teal-400 block p-2 border border-teal-700 rounded-md mb-2"
         onClick={() => dispatch(exampleActionOne())}
       >
         Example 1
@@ -29,7 +29,7 @@ export const Example = () => {
       </button>
       <button
         data-testid="example-three"
-        className=" bg-blue-400 block p-2 border border-blue-700 rounded-md mb-2"
+        className=" bg-teal-400 block p-2 border border-teal-700 rounded-md mb-2"
         onClick={() =>
           dispatch(exampleActionWithPayload("Geting text as payload"))
         }
