@@ -11,7 +11,7 @@
         @apply text-xl;
         color: #8d8989;
     }
-    p {
+    p, td, th {
         color: #989393;
     }
     @font-face {

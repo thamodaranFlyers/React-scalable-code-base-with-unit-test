@@ -41,8 +41,11 @@ const defaultBodyCells = [
   },
 ];
 
-const getColWidth = () => {
-  return `${100 / defaultHeaderCells.length}%`;
+const getColWidth = (headerCells) => {
+  const colLength = headerCells
+    ? headerCells.length
+    : defaultHeaderCells.length;
+  return `${(100 / colLength).toFixed(2)}%`;
 };
 
 const renderTableHeaderCell = (headerCells) => {
@@ -50,17 +53,23 @@ const renderTableHeaderCell = (headerCells) => {
   return tableHeaderCells?.map((header, i) => {
     return (
       <div
-        className={`flex w-[${getColWidth()}] bg-teal-50 p-3 border-b-[1px] border-teal-300`}
+        className={`flex bg-teal-50 p-3 border-b-[1px] border-teal-300`}
         style={header?.headerCellStyle}
         key={i}
       >
-        <h2 className="text-teal-700 font-bold text-sm">{header?.label}</h2>
+        <h2
+          className={`${
+            header?.headerTextClass ? header.headerTextClass : ""
+          } text-teal-700 font-bold text-sm`}
+        >
+          {header?.label}
+        </h2>
       </div>
     );
   });
 };
 
-const renderTableBodyCell = (bodyCells, data) => {
+const renderTableBodyCell = (headerCells, bodyCells, data) => {
   const tableData = data;
   const tableBodayCells = bodyCells || defaultBodyCells;
   return tableData?.length > 0 ? (
@@ -71,7 +80,10 @@ const renderTableBodyCell = (bodyCells, data) => {
             return (
               <div
                 key={i}
-                className={`w-[${getColWidth()}] p-2 text-xs`}
+                className={`w-[${getColWidth(
+                  headerCells
+                )}] p-2 text-xs flex items-center`}
+                style={cell?.tableCellStyle}
                 onClick={(e) =>
                   cell?.onColClick && cell?.onColClick(dataObj, e)
                 }
@@ -96,7 +108,7 @@ const Table = ({ headerCells, bodyCells, data }) => {
   return (
     <div>
       <div className="flex w-full">{renderTableHeaderCell(headerCells)}</div>
-      <div>{renderTableBodyCell(bodyCells, data)}</div>
+      <div>{renderTableBodyCell(headerCells, bodyCells, data)}</div>
     </div>
   );
 };

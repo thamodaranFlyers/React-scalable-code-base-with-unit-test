@@ -11,6 +11,9 @@ import EmployeeListPage from "./pages/EmployeeListPage";
 import OrderListPage from "./pages/OrderListPage";
 import StockListPage from "./pages/StockListPage";
 import "./index.css";
+import EmployeeDetail from "./pages/EmployeeDetail";
+import ProductPreviewPage from "./pages/ProductPreviewPage";
+import EstimatorPage from "./pages/EstimatorPage";
 
 function App() {
   //think of this as a dashboard page
@@ -43,6 +46,10 @@ function App() {
       element: <ShopListPage />,
     },
     {
+      path: "/estimator",
+      element: <EstimatorPage />,
+    },
+    {
       path: "/stock",
       element: <StockListPage />,
     },
@@ -52,6 +59,22 @@ function App() {
     },
     {
       path: "/orders",
+      element: <OrderListPage />,
+    },
+    {
+      path: "/products/product-preview",
+      element: <ProductPreviewPage />,
+    },
+    {
+      path: "/employee/:id",
+      element: <EmployeeDetail />,
+    },
+    {
+      path: "/announcement",
+      element: <OrderListPage />,
+    },
+    {
+      path: "/offers",
       element: <OrderListPage />,
     },
   ];

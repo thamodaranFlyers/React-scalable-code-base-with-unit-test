@@ -1,21 +1,15 @@
-import { useMemo, useState } from "react";
-// import { Link } from "react-router-dom";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import NotificationsActiveTwoToneIcon from "@mui/icons-material/NotificationsActiveTwoTone";
+// import SettingsIcon from "@mui/icons-material/Settings";
+import SettingsTwoToneIcon from "@mui/icons-material/SettingsTwoTone";
 import SelectBox from "./components/SelectBox";
 import OrderCard from "./components/OrderCard";
+import Navbar from "./components/Navbar";
 // import { useState } from "react";
 // import { useEffect, useState } from "react";
 
 export const Layout = ({ children }) => {
-  const [activeNav, setActiveNav] = useState("dashboard");
-  const location = useLocation();
-  const { pathname } = location;
-  useMemo(() => {
-    setActiveNav(pathname);
-  }, [pathname]);
-
   const stateOptions = [
     { id: 1, label: "Tamilnadu" },
     { id: 2, label: "Karnataka" },
@@ -76,7 +70,6 @@ export const Layout = ({ children }) => {
   const remainMutton = 10;
   const remainCkicken = 12;
   const quailCount = 1;
-  console.log("RENDER");
   return (
     <div className="grid grid-areas-layout grid-cols-layout grid-rows-layout h-full">
       <header className="grid-in-header bg-white border-b-2 border-teal-100 flex justify-end items-center gap-4 pl-8 pr-8">
@@ -90,80 +83,23 @@ export const Layout = ({ children }) => {
           onSelect={(selected) => console.log("SELECTED :: REGG", selected)}
           placeholder="Select Zone"
         />
+        <div>
+          <div className=" hover:drop-shadow-lg cursor-pointer relative">
+            <NotificationsActiveTwoToneIcon />
+            <p className=" absolute top-[-20px] right-[-10px] p-1 rounded-full bg-red-600 text-white font-bold text-xs">
+              10
+            </p>
+          </div>
+        </div>
         <div className="relative">
-          {/* <Link to="/notifications" > */}
-          <NotificationsActiveTwoToneIcon />
-          <p className=" absolute top-[-20px] right-[-10px] p-1 rounded-full bg-red-600 text-white font-bold text-xs">
-            10
-          </p>
-          {/* </Link> */}
+          <div className="hover:drop-shadow-lg group rounded-md cursor-pointer">
+            <SettingsTwoToneIcon />
+          </div>
         </div>
       </header>
-      <nav className="grid-in-nav bg-teal-600">
-        <div className="flex items-center justify-center text-white font-bold text-[2rem] border-b-2 border-teal-700 h-[5rem]">
-          WEM
-        </div>
-        <div
-          className={`${
-            activeNav === "/dashboard" ? "bg-teal-700" : ""
-          } p-3 text-white`}
-          onClick={() => setActiveNav("/dashboard")}
-        >
-          <Link className="block w-full" to="/dashboard">
-            Dashboard
-          </Link>
-        </div>
-        <div
-          className={`${
-            activeNav === "/orders" ? "bg-teal-700" : ""
-          } p-3 text-white`}
-          onClick={() => setActiveNav("/orders")}
-        >
-          <Link className="block w-full" to="/orders">
-            Orders
-          </Link>
-        </div>
-        <div
-          className={`${
-            activeNav === "/stock" ? "bg-teal-700" : ""
-          } p-3 text-white`}
-          onClick={() => setActiveNav("/stock")}
-        >
-          <Link className="block w-full" to="/stock">
-            Stock
-          </Link>
-        </div>
-        <div
-          className={`${
-            activeNav === "/products" ? "bg-teal-700" : ""
-          } p-3 text-white`}
-          onClick={() => setActiveNav("/products")}
-        >
-          <Link className="block w-full" to="/products">
-            Products
-          </Link>
-        </div>
-        <div
-          className={`${
-            activeNav === "/shops" ? "bg-teal-700" : ""
-          } p-3 text-white`}
-          onClick={() => setActiveNav("/shops")}
-        >
-          <Link className="block w-full" to="/shops">
-            Shops
-          </Link>
-        </div>
-        <div
-          className={`${
-            activeNav === "/employees" ? "bg-teal-700" : ""
-          } p-3 text-white`}
-          onClick={() => setActiveNav("/employees")}
-        >
-          <Link className="block w-full" to="/employees">
-            Employees
-          </Link>
-        </div>
-      </nav>
+
+      <Navbar />
+
       <div className="grid-in-main bg-teal-50 p-5 max-h-[90vh] overflow-auto">
         {children}
       </div>

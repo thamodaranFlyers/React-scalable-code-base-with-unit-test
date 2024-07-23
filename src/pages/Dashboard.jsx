@@ -9,9 +9,9 @@ function Dashboard() {
   } else if (currentUserID === "2") {
     ("");
   }
-  const newStatusDelayCount = 1;
-  const cuttingStatusDelayCount = 0;
-  const cleaningStatusDelayCount = 0;
+  const newStatusDelayCount = 0;
+  const cuttingStatusDelayCount = 1;
+  const packingStatusDelayCount = 0;
   const reachingYouStatusDelayCount = 0;
 
   const totalOrdersCount = 4;
@@ -148,9 +148,9 @@ function Dashboard() {
                       newStatusDelayCount > 0
                         ? "text-red-600"
                         : "text-green-700"
-                    } text-sm font-bold`}
+                    } text-xs font-bold`}
                   >
-                    New
+                    <Link to="/orders">New</Link>
                   </div>
                 </div>
                 <div
@@ -172,33 +172,33 @@ function Dashboard() {
                       cuttingStatusDelayCount > 0
                         ? "text-red-600"
                         : "text-green-700"
-                    } text-sm font-bold`}
+                    } text-xs font-bold text-center`}
                   >
-                    Cutting
+                    <Link to="/orders">Cutting & Cleaning</Link>
                   </div>
                 </div>
                 <div
                   className={`${
-                    cleaningStatusDelayCount > 0 ? "bg-red-300" : "bg-green-300"
+                    packingStatusDelayCount > 0 ? "bg-red-300" : "bg-green-300"
                   } pl-4 pr-4 pt-3 pb-3 rounded-md flex flex-col justify-center items-center w-[20%]`}
                 >
                   <h1
                     className={`${
-                      cleaningStatusDelayCount > 0
+                      packingStatusDelayCount > 0
                         ? "text-red-600"
                         : "text-green-700"
                     } font-bold`}
                   >
-                    {String(cleaningStatusDelayCount).padStart(3, 0)}
+                    {String(packingStatusDelayCount).padStart(3, 0)}
                   </h1>
                   <div
                     className={`${
-                      cleaningStatusDelayCount > 0
+                      packingStatusDelayCount > 0
                         ? "text-red-600"
                         : "text-green-700"
-                    } text-sm font-bold`}
+                    } text-xs font-bold`}
                   >
-                    Cleaning
+                    <Link to="/orders">Packing</Link>
                   </div>
                 </div>
                 <div
@@ -222,9 +222,9 @@ function Dashboard() {
                       reachingYouStatusDelayCount > 0
                         ? "text-red-600"
                         : "text-green-700"
-                    } text-sm font-bold text-center`}
+                    } text-xs font-bold text-center`}
                   >
-                    Reaching you
+                    <Link to="/orders">Pickup</Link>
                   </div>
                 </div>
               </div>
@@ -269,7 +269,6 @@ function Dashboard() {
                 <p className="text-xs mb-2 p-3">
                   <Link
                     to="/order/1234"
-                    target="_blank"
                     className="text-teal-700 underline font-bold"
                   >
                     1002
@@ -291,7 +290,6 @@ function Dashboard() {
                 <p className="text-xs mb-2 p-3">
                   <Link
                     to="/order/1234"
-                    target="_blank"
                     className="text-teal-700 underline font-bold"
                   >
                     1002
@@ -313,7 +311,6 @@ function Dashboard() {
                 <p className="text-xs mb-2 p-3">
                   <Link
                     to="/order/1234"
-                    target="_blank"
                     className="text-teal-700 underline font-bold"
                   >
                     1002
@@ -335,7 +332,6 @@ function Dashboard() {
                 <p className="text-xs mb-2 p-3">
                   <Link
                     to="/order/1234"
-                    target="_blank"
                     className="text-teal-700 underline font-bold"
                   >
                     1002
@@ -389,7 +385,6 @@ function Dashboard() {
                 <p className="text-xs mb-2 p-3">
                   <Link
                     to="/order/1234"
-                    target="_blank"
                     className="text-teal-700 underline font-bold"
                   >
                     1002
@@ -411,7 +406,6 @@ function Dashboard() {
                 <p className="text-xs mb-2 p-3">
                   <Link
                     to="/order/1234"
-                    target="_blank"
                     className="text-teal-700 underline font-bold"
                   >
                     1002
@@ -433,7 +427,6 @@ function Dashboard() {
                 <p className="text-xs mb-2 p-3">
                   <Link
                     to="/order/1234"
-                    target="_blank"
                     className="text-teal-700 underline font-bold"
                   >
                     1002
@@ -455,7 +448,6 @@ function Dashboard() {
                 <p className="text-xs mb-2 p-3">
                   <Link
                     to="/order/1234"
-                    target="_blank"
                     className="text-teal-700 underline font-bold"
                   >
                     1002
