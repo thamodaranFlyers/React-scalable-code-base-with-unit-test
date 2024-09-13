@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import LoginPage from "./pages/LoginPage";
 import LogoutPage from "./pages/LogoutPage";
 import Dashboard from "./pages/Dashboard";
@@ -14,8 +17,27 @@ import "./index.css";
 import EmployeeDetail from "./pages/EmployeeDetail";
 import ProductPreviewPage from "./pages/ProductPreviewPage";
 import EstimatorPage from "./pages/EstimatorPage";
+import ProductCreatePage from "./pages/ProductCreatePage";
+import { requestFCMToken } from "./utils/firebaseUtils";
+import NotificationComponent from "./components/NotificationComponent";
 
 function App() {
+  const [fcmToken, setFcmToken] = useState(null);
+
+  useEffect(() => {
+    const fetchFCMToken = async () => {
+      try {
+        const token = await requestFCMToken();
+        setFcmToken(token);
+        console.log("TOKEN :::::", token);
+      } catch (err) {
+        console.error("Error getting FCM token : ", err);
+      }
+    };
+    fetchFCMToken();
+  });
+
+  console.log("fcmToken", fcmToken);
   //think of this as a dashboard page
   const router = [
     {
@@ -36,6 +58,10 @@ function App() {
     {
       path: "/products",
       element: <ProductListPage />,
+    },
+    {
+      path: "/product/create",
+      element: <ProductCreatePage />,
     },
     {
       path: "/order/:id",
@@ -106,6 +132,20 @@ function App() {
         </Routes>
       </BrowserRouter>
       <Outlet />
+      <NotificationComponent />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition="Bounce"
+      />
     </div>
   );
 }

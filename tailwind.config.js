@@ -15,7 +15,7 @@ export default {
         countLayout: ["count     count", "count1     count2"],
       },
       gridTemplateColumns: {
-        layout: "15rem 1fr 20rem",
+        layout: "8rem 1fr 20rem",
         countLayout: "1fr 1fr",
       },
       gridTemplateRows: {
